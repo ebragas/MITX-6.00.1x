@@ -11,16 +11,21 @@
 
 from math import *
 
+# Main used to drive program
 def main():
-    print(pi)
-    print(area(3, 5))
-
+    x, y = 3, 5
+    print("Perimeter: {}".format(perimeter(x, y)))
+    print("Perimeter squared: {}".format(perimeter(x, y)**2))
+    print("Area: {}".format(area(x, y)))
+    print("Polysum: {}".format(polysum(x, y)))
 
 def area(n, s):
     """
     Input: int n, number of sides of a regular polygon; int s, length of each side
     Returns the area of the polygon.
     """
+    area = (0.25 * n * s**2) / tan(pi / n)
+    return area
 
 def perimeter(n, s):
     """
@@ -30,6 +35,13 @@ def perimeter(n, s):
     perim = n * s
     return perim
 
+def polysum(n, s):
+    """
+    Input: int n, number of sides of a regular polygon; int s, length of each sides
+    Returns the sum of the area and perimeter squared of a regular polygon,
+    rounded to four decimals.
+    """
+    return round(area(n, s) + perimeter(n, s)**2, 4)
 
 if __name__ == '__main__':
     main()
