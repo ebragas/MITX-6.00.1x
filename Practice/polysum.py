@@ -22,9 +22,13 @@ def area(n, s):
     Returns the area of the polygon.
     """
 
-
-def perimeter():
-    pass
+def perimeter(n, s):
+    """
+    Input: int n, number of sides of a regular polygon; int s, length of each side
+    Returns the perimeter of the polygon
+    """
+    perim = n * s
+    return perim
 
 
 if __name__ == '__main__':
