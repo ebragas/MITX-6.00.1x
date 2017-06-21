@@ -17,4 +17,4 @@ def oddTuples(aTup):
 
     return outTup
 
-oddTuples(aTup)
+print("Name: {}".format(oddTuples(('eric', 'bragas'))))

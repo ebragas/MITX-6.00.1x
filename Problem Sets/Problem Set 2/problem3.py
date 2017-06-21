@@ -1,11 +1,17 @@
-
+"""
 # Debt Caclulator
 
 # Write a program to calculate the remaining balance after one year if a person
 # pays only the minimum montly payment required each month. Add interest on the
 # remaining balance each month.
+"""
 
 def minPayment(balance, annualInterestRate):
+    """
+    Input: balance, as int or float for loan balance; annualInterestRate, as float for interest rate
+
+    Returns the minimum constant monthly payment to pay off the loan in 12 months.
+    """
 
     monthlyInterestRate = annualInterestRate / 12.0
 
