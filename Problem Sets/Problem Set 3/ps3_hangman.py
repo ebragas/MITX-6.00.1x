@@ -50,19 +50,35 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    letters = len(secretWord)
-    counter = 0
+    # Letter counter
+    numLetters = len(secretWord)
 
-    for letter in lettersGuessed:
-        if letter in secretWord:
-            counter += 1  # count letter
+    # Count guessed letters in word
+    for char in secretWord:
+        if char in lettersGuessed:
+            numLetters -= 1
         else:
-            pass  # don't count
-
-    if letters == counter:
+            return False
+    
+    # No unguessed letters
+    if numLetters == 0:
         return True
     else:
         return False
+
+    # letters = len(secretWord)
+    # counter = 0
+
+    # for letter in lettersGuessed:
+    #     if letter in secretWord:
+    #         counter += 1  # count letter
+    #     else:
+    #         pass  # don't count
+
+    # if letters == counter:
+    #     return True
+    # else:
+    #     return False
 
 
 
@@ -141,12 +157,14 @@ def hangman(secretWord):
         # Check validity
         if guess in lettersGuessed:
             print("Oops! You've already guessed "
-                  "that letter: {}".format(getAvailableLetters(lettersGuessed)))
+                  "that letter: {}".format(getGuessedWord(secretWord, lettersGuessed)))
         elif guess not in secretWord:
+            lettersGuessed.append(guess)
             print("Oops! That letter is not in my "
                   "word: {}".format(getGuessedWord(secretWord, lettersGuessed)))
             guessCount -= 1
         else:
+            lettersGuessed.append(guess)
             print("Good guess: {}".format(getGuessedWord(secretWord, lettersGuessed)))
 
         print("------------")
@@ -155,12 +173,15 @@ def hangman(secretWord):
         if isWordGuessed(secretWord, lettersGuessed):
             print("Congratulations, you won!")
             won = True
+        elif guessCount == 0:
+            print("Sorry, you ran out of guesses. The word was {}.".format(secretWord))
+            break
 
+    return
 
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
-secretWord = "eric"
+secretWord = chooseWord(wordlist).lower()
 hangman(secretWord)
